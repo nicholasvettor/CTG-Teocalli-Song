@@ -26,6 +26,7 @@ public class PixelatedCamera : MonoBehaviour
     public ScreenSize targetScreenSize = new ScreenSize { width = 256, height = 144 };  // Only used with PixelScreenMode.Resize
     public uint screenScaleFactor = 1;  // Only used with PixelScreenMode.Scale
 
+    public int depth = 25;
     
     [Header("Display")]
     public RawImage display;
@@ -39,13 +40,14 @@ public class PixelatedCamera : MonoBehaviour
     private void Start()
     {
         // Initialize the system
-        Init();
+        //Init();
     }
 
     private void Update()
     {
         // Re initialize system if the screen has been resized
-        if (CheckScreenResize()) Init();
+        //if (CheckScreenResize()) 
+        //Init();
     }
 
     public void Init() {
@@ -65,7 +67,7 @@ public class PixelatedCamera : MonoBehaviour
         int height = mode == PixelScreenMode.Resize ? (int)targetScreenSize.height : screenHeight / (int)screenScaleFactor;
 
         // Initialize the render texture
-        renderTexture = new RenderTexture(width, height, 24) {
+        renderTexture = new RenderTexture(height, width, depth) {
             filterMode = FilterMode.Point,
             antiAliasing = 1
         };
