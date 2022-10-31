@@ -1659,7 +1659,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533036253}
-  m_LocalRotation: {x: 0.23141086, y: 0.27768898, z: -0.069110565, w: 0.9298181}
+  m_LocalRotation: {x: 0.22393022, y: -0.004588505, z: 0.0010542904, w: 0.9745938}
   m_LocalPosition: {x: 20.04, y: 2.561, z: -4.248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1755,6 +1755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd2288e47bae274d96ab67391809d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SavedMovement: {x: 0, y: 0, z: 0}
+  speed: 0.5
 --- !u!136 &561965754
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1827,7 +1829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561965752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.17, y: 0.5, z: -1}
+  m_LocalPosition: {x: 20, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2897,7 +2899,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.005
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2700874171910072506, guid: 330efb0e9eed825408809c121441b8a5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 330efb0e9eed825408809c121441b8a5, type: 3}
 --- !u!1 &1002443584
 GameObject:
@@ -3468,7 +3476,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193475034}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!4 &1193475037
 Transform:
   m_ObjectHideFlags: 0
@@ -4129,10 +4137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536517307}
-  - component: {fileID: 1536517306}
   - component: {fileID: 1536517305}
-  - component: {fileID: 1536517304}
-  - component: {fileID: 1536517303}
   - component: {fileID: 1536517302}
   - component: {fileID: 1536517301}
   m_Layer: 0
@@ -4174,106 +4179,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &1536517303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4425428723088313502, guid: fc9b148a2950aaf4cba8422632222c5d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1989939460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536517300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5deb9ff5611cb9d4596d397ac57ee8c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalInput: Horizontal
-  verticallInput: Vertical
-  jumpInput: 32
-  strafeInput: 9
-  sprintInput: 304
-  rotateCameraXInput: Mouse X
-  rotateCameraYInput: Mouse Y
-  cc: {fileID: 0}
-  tpCamera: {fileID: 0}
-  cameraMain: {fileID: 0}
---- !u!114 &1536517304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4425428723088313503, guid: fc9b148a2950aaf4cba8422632222c5d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1989939460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536517300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73fbf3aa05f6be24780438449f505aa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useRootMotion: 0
-  rotateByWorld: 0
-  useContinuousSprint: 1
-  sprintOnlyFree: 1
-  locomotionType: 0
-  freeSpeed:
-    movementSmooth: 6
-    animationSmooth: 0.2
-    rotationSpeed: 16
-    walkByDefault: 0
-    rotateWithCamera: 0
-    walkSpeed: 2
-    runningSpeed: 4
-    sprintSpeed: 6
-  strafeSpeed:
-    movementSmooth: 6
-    animationSmooth: 0.2
-    rotationSpeed: 16
-    walkByDefault: 0
-    rotateWithCamera: 1
-    walkSpeed: 2
-    runningSpeed: 4
-    sprintSpeed: 6
-  jumpWithRigidbodyForce: 0
-  jumpAndRotate: 1
-  jumpTimer: 0.3
-  jumpHeight: 4
-  airSpeed: 5
-  airSmooth: 6
-  extraGravity: -10
-  limitFallVelocity: -15
-  groundLayer:
-    m_Bits: 1
-  groundMinDistance: 0.25
-  groundMaxDistance: 0.5
-  slopeLimit: 45
-  animator: {fileID: 0}
-  _rigidbody: {fileID: 0}
-  frictionPhysics: {fileID: 0}
-  maxFrictionPhysics: {fileID: 0}
-  slippyPhysics: {fileID: 0}
-  _capsuleCollider: {fileID: 0}
-  isJumping: 0
-  <isGrounded>k__BackingField: 0
-  <isSprinting>k__BackingField: 0
-  <stopMove>k__BackingField: 0
-  inputMagnitude: 0
-  verticalSpeed: 0
-  horizontalSpeed: 0
-  moveSpeed: 0
-  verticalVelocity: 0
-  colliderRadius: 0
-  colliderHeight: 0
-  heightReached: 0
-  jumpCounter: 0
-  groundDistance: 0
-  lockMovement: 0
-  lockRotation: 0
-  _isStrafing: 0
-  rotateTarget: {fileID: 0}
-  input: {x: 0, y: 0, z: 0}
-  colliderCenter: {x: 0, y: 0, z: 0}
-  inputSmooth: {x: 0, y: 0, z: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!95 &1536517305
 Animator:
   serializedVersion: 4
@@ -4283,7 +4188,7 @@ Animator:
   m_PrefabInstance: {fileID: 1989939460}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536517300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 340f99b8334a14c4a8a01dce6e1e5348, type: 3}
   m_Controller: {fileID: 9100000, guid: cbd1db45c75e5b948a5befe9ecb80421, type: 2}
   m_CullingMode: 1
@@ -4295,25 +4200,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1536517306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 656490300, guid: fc9b148a2950aaf4cba8422632222c5d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1989939460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536517300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c789670a80b704eba4dfebed94a111, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  header: 'Full Version Features:'
-  comment: "- Generic Action Interaction System\n- Advanced StepOffset & GroundSnaper\n-
-    Climb Ladder \n- Health & Stamina With UI\n- Footstep System\n- Ragdoll System
-    \n- Slide Slopes\n- Powerful Events\n- Debug Window\n- Crouch\n- Roll\n- And
-    much more..."
-  inEdit: 0
 --- !u!4 &1536517307
 Transform:
   m_ObjectHideFlags: 0
@@ -4621,8 +4507,6 @@ GameObject:
   - component: {fileID: 1803327940}
   - component: {fileID: 1803327939}
   - component: {fileID: 1803327938}
-  - component: {fileID: 1803327937}
-  - component: {fileID: 1803327936}
   - component: {fileID: 1803327941}
   m_Layer: 0
   m_Name: vThirdPersonCamera_LITE
@@ -4631,76 +4515,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1803327936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2700874171910072507, guid: 330efb0e9eed825408809c121441b8a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 985617197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803327935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1bfe72fbc87d04e885296b53e91c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  smoothCameraRotation: 12
-  cullingLayer:
-    m_Bits: 1
-  lockCamera: 0
-  rightOffset: 0
-  defaultDistance: 2.5
-  height: 1.4
-  smoothFollow: 10
-  xMouseSensitivity: 3
-  yMouseSensitivity: 3
-  yMinLimit: -40
-  yMaxLimit: 80
-  indexList: 0
-  indexLookPoint: 0
-  offSetPlayerPivot: 0
-  currentStateName: 
-  currentTarget: {fileID: 0}
-  movementSpeed: {x: 0, y: 0}
-  targetLookAt: {fileID: 0}
-  currentTargetPos: {x: 0, y: 0, z: 0}
-  lookPoint: {x: 0, y: 0, z: 0}
-  current_cPos: {x: 0, y: 0, z: 0}
-  desired_cPos: {x: 0, y: 0, z: 0}
-  _camera: {fileID: 0}
-  distance: 5
-  mouseY: 0
-  mouseX: 0
-  currentHeight: 0
-  cullingDistance: 0
-  checkHeightRadius: 0.4
-  clipPlaneMargin: 0
-  forward: -1
-  xMinLimit: -360
-  xMaxLimit: 360
-  cullingHeight: 0.2
-  cullingMinDist: 0.1
---- !u!114 &1803327937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3851937974465073233, guid: 330efb0e9eed825408809c121441b8a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 985617197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803327935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c789670a80b704eba4dfebed94a111, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  header: About the Camera System
-  comment: "In the Full Version you will get: \n\n- CameraStates: You can create
-    different CameraStates for each states of your character, Aiming, Crouching,
-    etc..\n- CameraModes: You can set a Fixed Camera, Fixed that look at the Target,
-    Fixed Angles, Triggers to ChangeStates\n- Much more options like offsets, angle
-    limitation, smoothness, "
-  inEdit: 0
 --- !u!81 &1803327938
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4709,7 +4523,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 985617197}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803327935}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1803327939
 Camera:
   m_ObjectHideFlags: 0
@@ -4762,7 +4576,7 @@ Transform:
   m_PrefabInstance: {fileID: 985617197}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803327935}
-  m_LocalRotation: {x: 0.23141086, y: 0.27768898, z: -0.069110565, w: 0.9298181}
+  m_LocalRotation: {x: 0.22393022, y: -0.004588505, z: 0.0010542904, w: 0.9745938}
   m_LocalPosition: {x: 20.04, y: 2.561, z: -4.248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5313,6 +5127,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonController_LITE
       objectReference: {fileID: 0}
+    - target: {fileID: 4425428723088313500, guid: fc9b148a2950aaf4cba8422632222c5d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4425428723088313501, guid: fc9b148a2950aaf4cba8422632222c5d,
         type: 3}
       propertyPath: m_RootOrder
@@ -5368,7 +5187,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: fc9b148a2950aaf4cba8422632222c5d, type: 3}
 --- !u!1 &2000268107
 GameObject:
