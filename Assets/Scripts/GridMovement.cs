@@ -38,21 +38,21 @@ public class GridMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.D)) {
             if (!Physics.CheckSphere(transform.position + new Vector3(1, 0, 0), 0.1f)){
-                a = 1;
+                d = 1;
             }
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (!Physics.CheckSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)){
-                d = 1;
+                a = 1;
             }
 
         }
 
 
-        Vector3 pos = new Vector3(a - d, 0, w - s);
+        Vector3 pos = new Vector3(d - a, 0, w - s);
         transform.position += pos;
-
+        
 
         if (pos != Vector3.zero)
         {
