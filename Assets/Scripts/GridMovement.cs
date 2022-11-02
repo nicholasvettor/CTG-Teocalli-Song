@@ -8,7 +8,8 @@ public class GridMovement : MonoBehaviour
 
     public Vector3 SavedMovement = new Vector3(0, 0, 0);
     public float speed = 0.5f;
-
+    private float FireRate = 1f;
+    private float CanFire = -2.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,12 +60,12 @@ public class GridMovement : MonoBehaviour
             SavedMovement = pos;
             
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > CanFire)
         {
             if (!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f))
             {
                 transform.position += SavedMovement * 2;
-                
+                CanFire = Time.time + FireRate;
             }
         }
 
