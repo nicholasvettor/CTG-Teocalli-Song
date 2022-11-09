@@ -28,26 +28,26 @@ public class GridMovement : MonoBehaviour
        // gameObject.GetComponent<Collider>)
 
         if(Input.GetKeyDown(KeyCode.W)) {
-            if (overlapSphere(transform.position + new Vector3(0, 0, 1)))//!Physics.CheckSphere(transform.position + new Vector3(0, 0, 1), 0.1f)
+            if (overlapSphere(transform.position + new Vector3(0, 0, 1), 0.1f))//!Physics.CheckSphere(transform.position + new Vector3(0, 0, 1), 0.1f)
             {
                 w = 1;
             }
         }
         if(Input.GetKeyDown(KeyCode.S))
         {
-            if (overlapSphere(transform.position + new Vector3(0, 0, -1))){//!Physics.CheckSphere(transform.position + new Vector3(0, 0, -1), 0.1f)
+            if (overlapSphere(transform.position + new Vector3(0, 0, -1), 0.1f)){//!Physics.CheckSphere(transform.position + new Vector3(0, 0, -1), 0.1f)
 
                 s = 1;
             }
         }
         if(Input.GetKeyDown(KeyCode.D)) {
-            if (overlapSphere(transform.position + new Vector3(1, 0, 0))){//!Physics.CheckSphere(transform.position + new Vector3(1, 0, 0), 0.1f)
+            if (overlapSphere(transform.position + new Vector3(1, 0, 0), 0.1f)){//!Physics.CheckSphere(transform.position + new Vector3(1, 0, 0), 0.1f)
                 d = 1;
             }
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (overlapSphere(transform.position + new Vector3(-1, 0, 0))){//!Physics.CheckSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)
+            if (overlapSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)){//!Physics.CheckSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)
                 a = 1;
             }
 
@@ -63,7 +63,7 @@ public class GridMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f))
+            if (overlapSphere(transform.position + SavedMovement * 2, 0.2f))
             {
                 transform.position += SavedMovement * 2;
                 
@@ -72,10 +72,10 @@ public class GridMovement : MonoBehaviour
 
     }
 
-    private bool overlapSphere(Vector3 pos)
+    private bool overlapSphere(Vector3 pos, float size)
     {
 
-        Collider[] overLap = Physics.OverlapSphere(pos, 0.1f);
+        Collider[] overLap = Physics.OverlapSphere(pos, size);
 
         if(overLap.Length == 0) { return true; }
 
