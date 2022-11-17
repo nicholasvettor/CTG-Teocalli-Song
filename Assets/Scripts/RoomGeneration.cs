@@ -11,12 +11,12 @@ public class RoomGeneration : MonoBehaviour
     [ReadOnly]
     public List<GameObject> generatedRooms = new List<GameObject>();
 
-    public int commonRoomSize = 11;
+    public int commonRoomSize = 17;
 
     [ReadOnly]
-    public int distance = 11;
+    public int distance = 17;
 
-    public int timesRun = 10;
+    public int timesRun = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,8 @@ public class RoomGeneration : MonoBehaviour
             int randomRoom = Random.Range(0, rooms.Count);
 
             GameObject room = GameObject.Instantiate(rooms[randomRoom]);
+
+            room.transform.position = new Vector3(20, room.transform.position.y, room.transform.position.z);
 
             room.transform.Translate(0,0,distance);
 

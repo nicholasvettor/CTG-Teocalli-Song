@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class GridMovement : MonoBehaviour
@@ -8,7 +9,11 @@ public class GridMovement : MonoBehaviour
 
     public Vector3 SavedMovement = new Vector3(0, 0, 0);
     public float speed = 0.5f;
-    public GameObject boxOverLap; 
+    public GameObject boxOverLap;
+
+    [ReadOnly]
+    private bool move = false; //jeremy is annoying so this is a feautre (I HATE YOU I HATE YOU I HATE YOU)
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,49 +30,73 @@ public class GridMovement : MonoBehaviour
         int d = 0;
         int a = 0;
 
-       // gameObject.GetComponent<Collider>)
-
-        if(Input.GetKeyDown(KeyCode.W)) {
-            if (overlapSphere(transform.position + new Vector3(0, 0, 1), 0.1f))//!Physics.CheckSphere(transform.position + new Vector3(0, 0, 1), 0.1f)
+        // gameObject.GetComponent<Collider>)
+        if (TimerSystem.tick)
+        {
+            if (!move)
             {
-                w = 1;
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            if (overlapSphere(transform.position + new Vector3(0, 0, -1), 0.1f)){//!Physics.CheckSphere(transform.position + new Vector3(0, 0, -1), 0.1f)
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    if (!Physics.CheckSphere(transform.position + new Vector3(0, 0, 1), 0.1f))//!Physics.CheckSphere(transform.position + new Vector3(0, 0, 1), 0.1f)overlapSphere(transform.position + new Vector3(0, 0, 1), 0.1f)
+                    {
+                        w = 1;
+                        move = true;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    if (!Physics.CheckSphere(transform.position + new Vector3(0, 0, -1), 0.1f))
+                    {//!Physics.CheckSphere(transform.position + new Vector3(0, 0, -1), 0.1f)overlapSphere(transform.position + new Vector3(0, 0, -1), 0.1f)
 
-                s = 1;
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.D)) {
-            if (overlapSphere(transform.position + new Vector3(1, 0, 0), 0.1f)){//!Physics.CheckSphere(transform.position + new Vector3(1, 0, 0), 0.1f)
-                d = 1;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (overlapSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)){//!Physics.CheckSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)
-                a = 1;
-            }
+                        s = 1;
+                        move = true;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    if (!Physics.CheckSphere(transform.position + new Vector3(1, 0, 0), 0.1f))
+                    {//!Physics.CheckSphere(transform.position + new Vector3(1, 0, 0), 0.1f)overlapSphere(transform.position + new Vector3(1, 0, 0), 0.1f)
+                        d = 1;
+                        move = true;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    if (!Physics.CheckSphere(transform.position + new Vector3(-1, 0, 0), 0.1f))
+                    {//!Physics.CheckSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)overlapSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)
+                        a = 1;
+                        move = true;
+                    }
 
-        }
-
-        Vector3 pos = new Vector3(d - a, 0, w - s);
-        transform.position += pos;
-
-        if (pos != Vector3.zero)
-        {
-            SavedMovement = pos;
+                }
+            }
             
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (overlapSphere(transform.position + SavedMovement * 2, 0.2f))
+            if (move)
             {
-                transform.position += SavedMovement * 2;
-                
+                Vector3 pos = new Vector3(d - a, 0, w - s);
+                transform.position += pos;
+
+                if (pos != Vector3.zero)
+                {
+                    SavedMovement = pos;
+
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f))//!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f)overlapSphere(transform.position + SavedMovement * 2, 0.2f)
+                    {
+                        transform.position += SavedMovement * 2;
+
+                    }
+                }
             }
+        }
+
+        if (!TimerSystem.tick)
+        {
+
+            move = false;
+
         }
 
     }

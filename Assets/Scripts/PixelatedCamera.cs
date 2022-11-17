@@ -19,6 +19,7 @@ public class PixelatedCamera : MonoBehaviour
 
     private Camera renderCamera;
     private RenderTexture renderTexture;
+
     private int screenWidth, screenHeight;
 
     [Header("Screen scaling settings")]

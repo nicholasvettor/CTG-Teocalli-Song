@@ -7,14 +7,15 @@ public class CameraMoveBetweenRooms : MonoBehaviour
 
     public Transform cameraPos;
 
-    private Vector3 childPos;
-    
+    private Vector3 savedPos;
+
+
     // Start is called before the first frame update
     void Start()
     {
         Quaternion rotation = transform.rotation;
         transform.rotation = new Quaternion(0, 0, 0, 0);
-        transform.Translate(0, 0, 11);
+        transform.Translate(0, 0, 17);
         transform.rotation = rotation;
     }
 
@@ -22,16 +23,29 @@ public class CameraMoveBetweenRooms : MonoBehaviour
     void Update()
     {
 
-          if(childPos != null)
-        {
+        /*if(childPos != null)
+      {
 
-            cameraPos.position = Vector3.Lerp(cameraPos.position, childPos, 1 * Time.deltaTime);
+          cameraPos.position = Vector3.Lerp(cameraPos.position, childPos, 1 * Time.deltaTime);
+
+      }*/
+
+
+        /*Vector3 newPos = new Vector3(transform.position.x + 3, cameraPos.position.y, transform.position.z - 3);
+
+        if(newPos != savedPos)
+        {
+            
+            cameraPos.position = (newPos);
+            
 
         }
         
+        savedPos = newPos;*/
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         Debug.Log("NONWODAWNDWADAW");
 
@@ -57,7 +71,7 @@ public class CameraMoveBetweenRooms : MonoBehaviour
 
             }
         }
-    }
+    }*/
 
 
 }
