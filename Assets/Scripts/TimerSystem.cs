@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimerSystem : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class TimerSystem : MonoBehaviour
     public int normalFov;
 
     public int backFov;
+
+    public List<Sprite> timerSprites;
+
+    public Image timerImage;
+
+    private int Image;
+
+    private bool run;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +38,9 @@ public class TimerSystem : MonoBehaviour
 
         camera.fieldOfView = backFov;
 
-        Debug.Log("waojhfgsieyuhq3wiyegheiduehbivusnigbufahs");
+        Debug.Log("FOV Updated");
+
+        Invoke("SetSpriteImage", 0.079f);
 
     }
 
@@ -49,14 +60,29 @@ public class TimerSystem : MonoBehaviour
 
     }
 
-    /*private void Update()
+    void Update()
     {
-        if (tick)
+        
+    }
+
+    public void SetSpriteImage()
+    {
+
+        if(Image > timerSprites.Count)
         {
-
-            camera.fieldOfView = Mathf.SmoothStep(camera.fieldOfView, normalFov,Time.deltaTime);//no worky
-
+            Image = 0;
+            return;
         }
-    }*/
+        else
+        {
+            Debug.Log(Image);
+
+            timerImage.sprite = timerSprites[Image++];
+
+            Invoke("SetSpriteImage", 0.079f);//
+        }
+        
+
+    }
 
 }
