@@ -27,6 +27,10 @@ public class PlayerStat : MonoBehaviour
 
     public Sprite normalHeartSprite;
 
+    public bool LIGHTNINGPOWER;
+
+    public Image movingThing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,32 +46,38 @@ public class PlayerStat : MonoBehaviour
         {
             deathScreen.gameObject.SetActive(true);
 
+            heart1.gameObject.SetActive(false);
+            heart2.gameObject.SetActive(false);
+            heart3.gameObject.SetActive(false);
+
+            movingThing.gameObject.SetActive(false);
+
             Invoke("endGame", 5f);
 
         }
-
-        if(CurrentHealth < 66)
+        if(CurrentHealth < 99)
         {
             heart1.sprite = damagedHeartSprite;
 
-            if(CurrentHealth < 33)
+            if (CurrentHealth < 66)
             {
                 heart2.sprite = damagedHeartSprite;
 
-                if(CurrentHealth < 1)
+                if (CurrentHealth < 33)
                 {
                     heart3.sprite = damagedHeartSprite;
+
                 }
                 else
                 {
                     heart3.sprite = normalHeartSprite;
                 }
-
             }
             else
             {
                 heart2.sprite = normalHeartSprite;
             }
+            
         }
         else
         {

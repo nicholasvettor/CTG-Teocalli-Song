@@ -906,7 +906,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533036253}
-  m_LocalRotation: {x: 0.38268343, y: -3e-45, z: 1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: 1e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: 20, y: 10.5, z: -10}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1201,6 +1201,8 @@ MonoBehaviour:
   heart3: {fileID: 454700462}
   damagedHeartSprite: {fileID: 21300000, guid: 573c96b10cdaaa84381c7bcadd924818, type: 3}
   normalHeartSprite: {fileID: 21300000, guid: e63bf54d8e53eed48bc374648092f29c, type: 3}
+  LIGHTNINGPOWER: 0
+  movingThing: {fileID: 1180564255}
 --- !u!1 &699895356
 GameObject:
   m_ObjectHideFlags: 3
@@ -1667,7 +1669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 846892681}
   normalFov: 70
-  backFov: 75
+  backFov: 70
   timerSprites:
   - {fileID: 21300000, guid: 2237c0bb27864204d88a9de22544284e, type: 3}
   - {fileID: 21300000, guid: 6ac0e4b5337b77c4fa41019b4f5d66dd, type: 3}
