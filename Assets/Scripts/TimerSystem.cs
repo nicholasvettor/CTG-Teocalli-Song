@@ -26,7 +26,7 @@ public class TimerSystem : MonoBehaviour
     void Start()
     {
 
-        InvokeRepeating("runTick", 0.01f, 1.0f);
+        InvokeRepeating("runTick", 0.5f, 1.0f);
 
     }
 
