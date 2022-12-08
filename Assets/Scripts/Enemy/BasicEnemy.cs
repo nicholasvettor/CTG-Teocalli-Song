@@ -9,31 +9,6 @@ public class BasicEnemy : MonoBehaviour
 
     private bool run = true;
     public int speed = 0;
-    private NavMeshAgent agent;
-
-    private bool addNavMesh = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(Vector3.zero, out hit, 1000.0f, NavMesh.AllAreas))
-        {
-            Vector3 result = hit.position;
-            addNavMesh = true;
-        }
-        else
-        {
-            addNavMesh = false;
-        }
-
-        if (addNavMesh)
-        {
-            agent = gameObject.AddComponent<NavMeshAgent>();
-            Debug.Log("added navmeshagent");
-        }
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -59,7 +34,7 @@ public class BasicEnemy : MonoBehaviour
             {
                 Invoke("setRun", 0.5f);
             }
-            
+
 
         }
     }
@@ -98,13 +73,20 @@ public class BasicEnemy : MonoBehaviour
     void moveToPlayer(GameObject player)
     {
 
-        speed = 10;
+        Vector3 vector = gameObject.transform.position - player.transform.position;
 
-        agent.speed = speed;
+        float distance = vector.magnitude;
 
-        agent.enabled = true;
+        if(distance <= 1)
+        {
 
-        Invoke("stopWalking", 0.25f);
+            player.GetComponent<PlayerStat>().CurrentHealth -= 34;
+
+        }
+        else
+        {
+            transform.position += transform.forward;
+        }
 
     }
 
@@ -113,9 +95,9 @@ public class BasicEnemy : MonoBehaviour
         run = true;
     }
 
-    void stopWalking()
+    public void kill()
     {
-        speed = 0;
+        Destroy(gameObject);
     }
 
 }

@@ -15,6 +15,8 @@ public class PlayerStat : MonoBehaviour
 
     public Image deathScreen;
 
+    public Image winScreen;
+
     public TextMeshPro deathText;
 
     public Image heart1;
@@ -44,13 +46,7 @@ public class PlayerStat : MonoBehaviour
     {
         if(CurrentHealth < 1)
         {
-            deathScreen.gameObject.SetActive(true);
-
-            heart1.gameObject.SetActive(false);
-            heart2.gameObject.SetActive(false);
-            heart3.gameObject.SetActive(false);
-
-            movingThing.gameObject.SetActive(false);
+            HideUI();
 
             Invoke("endGame", 5f);
 
@@ -86,11 +82,30 @@ public class PlayerStat : MonoBehaviour
 
     }
 
+    void HideUI()
+    {
+        deathScreen.gameObject.SetActive(true);
+
+        heart1.gameObject.SetActive(false);
+        heart2.gameObject.SetActive(false);
+        heart3.gameObject.SetActive(false);
+
+    }
+
     void endGame()
     {
         Debug.Log("Closing game!");
 
         Application.Quit();
+    }
+
+    void winGame()
+    {
+        winScreen.gameObject.SetActive(true);
+
+        HideUI();
+
+        Invoke("endGame", 5f);
     }
 
 }
