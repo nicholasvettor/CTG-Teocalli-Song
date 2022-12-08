@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class AiofFatZombies : MonoBehaviour
 {
     Transform player; public Animator anim;
-    public float playerHealth = 100; public Text playerhath;
+    public float playerHealth = 100; 
+    public Text playerhath;
     public bool allowtohit = false;
     UnityEngine.AI.NavMeshAgent nav;
     float navspeed = 0.5f;
