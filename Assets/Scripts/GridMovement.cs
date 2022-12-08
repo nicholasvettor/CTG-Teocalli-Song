@@ -10,14 +10,26 @@ public class GridMovement : MonoBehaviour
     public Vector3 SavedMovement = new Vector3(0, 0, 0);
     public float speed = 0.5f;
     public GameObject boxOverLap;
-
+    public AnimationClip animationf;
+    public AnimationClip animationr;
+    public AnimationClip animationl;
+    public AnimationClip animationb;
+    public AnimationClip storedAnimation;
+    public SpriteRenderer spriteRenderer;
     [ReadOnly]
     private bool move = false; //jeremy is annoying so this is a feautre (I HATE YOU I HATE YOU I HATE YOU)
+    private Animation anim;
+    private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = gameObject.GetComponent<Animation>();
+
+        animator = gameObject.GetComponent<Animator>();
+
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -29,6 +41,12 @@ public class GridMovement : MonoBehaviour
         int s = 0;
         int d = 0;
         int a = 0;
+        GetComponent<Animator>().SetBool("wpressed", Input.GetKeyDown(KeyCode.W));
+        GetComponent<Animator>().SetBool("spressed", Input.GetKeyDown(KeyCode.S));
+        GetComponent<Animator>().SetBool("apressed", Input.GetKeyDown(KeyCode.A));
+        GetComponent<Animator>().SetBool("dpressed", Input.GetKeyDown(KeyCode.D));
+
+
 
         // gameObject.GetComponent<Collider>)
         if (TimerSystem.tick)
@@ -41,6 +59,7 @@ public class GridMovement : MonoBehaviour
                     {
                         w = 1;
                         move = true;
+                        storedAnimation = animationf;
                     }
                 }
                 if (Input.GetKeyDown(KeyCode.S))
@@ -50,6 +69,7 @@ public class GridMovement : MonoBehaviour
 
                         s = 1;
                         move = true;
+                        storedAnimation = animationb;
                     }
                 }
                 if (Input.GetKeyDown(KeyCode.D))
@@ -58,6 +78,7 @@ public class GridMovement : MonoBehaviour
                     {//!Physics.CheckSphere(transform.position + new Vector3(1, 0, 0), 0.1f)overlapSphere(transform.position + new Vector3(1, 0, 0), 0.1f)
                         d = 1;
                         move = true;
+                        storedAnimation = animationr;
                     }
                 }
                 if (Input.GetKeyDown(KeyCode.A))
@@ -66,19 +87,29 @@ public class GridMovement : MonoBehaviour
                     {//!Physics.CheckSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)overlapSphere(transform.position + new Vector3(-1, 0, 0), 0.1f)
                         a = 1;
                         move = true;
+                        storedAnimation = animationl;
                     }
 
                 }
             }
-            
+
             if (move)
             {
                 Vector3 pos = new Vector3(d - a, 0, w - s);
                 transform.position += pos;
 
+                if (anim != null) {
+                    anim.wrapMode = WrapMode.Once;
+                    anim.Play("storedAnimation");
+
+                    //animator.Play("Player_right");
+                    //spriteRenderer.sprite = storedAnimation;
+                }
+
                 if (pos != Vector3.zero)
                 {
                     SavedMovement = pos;
+                    
 
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
