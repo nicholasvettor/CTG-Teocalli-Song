@@ -91,6 +91,23 @@ public class GridMovement : MonoBehaviour
                     }
 
                 }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f))//!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f)overlapSphere(transform.position + SavedMovement * 2, 0.2f)
+                    {
+                        transform.position += SavedMovement * 2;
+
+                    }
+                    else
+                    {
+                        //Debug.Log("TELPOERTY NO WORKY");
+                    }
+                }
+                else
+                {
+                    //Debug.Log("KEYBOARD BROKE");
+                }
             }
 
             if (move)
@@ -111,14 +128,6 @@ public class GridMovement : MonoBehaviour
                     SavedMovement = pos;
                     
 
-                }
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    if (!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f))//!Physics.CheckSphere(transform.position + SavedMovement * 2, 0.2f)overlapSphere(transform.position + SavedMovement * 2, 0.2f)
-                    {
-                        transform.position += SavedMovement * 2;
-
-                    }
                 }
             }
         }

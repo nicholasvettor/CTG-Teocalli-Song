@@ -68,7 +68,7 @@ public class TimerSystem : MonoBehaviour
     public void SetSpriteImage()
     {
 
-        if(Image > timerSprites.Count)
+        if(Image >= timerSprites.Count)
         {
             Image = 0;
             return;

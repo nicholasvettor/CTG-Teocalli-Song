@@ -38,7 +38,7 @@ public class BasicEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = GameObject.Find("Player").transform.position;
+        //agent.destination = GameObject.Find("Player").transform.position;
 
         if (TimerSystem.tick)
         {
